@@ -9,11 +9,6 @@ namespace DAN_XLIV_Andreja_Kolesar.View
     /// </summary>
     public partial class Employee : Window
     {
-        public Employee(User user)
-        {
-            InitializeComponent();
-            this.DataContext = new EmployeeViewModel(this,user);
-        }
 
         public Employee()
         {

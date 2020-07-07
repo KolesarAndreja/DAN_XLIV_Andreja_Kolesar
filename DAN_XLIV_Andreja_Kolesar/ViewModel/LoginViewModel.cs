@@ -23,7 +23,6 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
             {
                 return _currentUser;
             }
-
             set
             {
                 _currentUser = value;
@@ -35,7 +34,6 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
         {
             login = openLogin;
             currentUser = new User();
-
         }
 
         #region Commands
@@ -60,23 +58,18 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
                 switch (currentUser.role)
                 {
                     case "zaposleni":
-                        
                         Employee openEmployee = new Employee();
                         login.Close();
                         openEmployee.ShowDialog();
-                        
                         break;
                     case "gost":
                         Guest openGuest = new Guest();
                         login.Close();
                         openGuest.ShowDialog();
-                       
                         break;
                     case null:
                         MessageBox.Show("Invalid username or password. Try again.");
                         break;
-
-
                 }
             }
             catch (Exception ex)
@@ -88,14 +81,6 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
         private bool CanLoginExecute(object obj)
         {
             return true;
-            //if (String.IsNullOrEmpty(currentUser.password) || String.IsNullOrEmpty(currentUser.username))
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            //    return true;
-            //}
         }
         #endregion
 
