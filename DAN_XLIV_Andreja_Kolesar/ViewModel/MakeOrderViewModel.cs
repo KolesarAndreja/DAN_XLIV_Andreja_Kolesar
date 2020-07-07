@@ -29,22 +29,11 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
             {
                 _newOrder = value;
                 OnPropertyChanged("newOrder");
-            }
-        }
-        private int _totalPrice;
-        public int totalPrice
-        {
-            get
-            {
-                return _totalPrice;
-                
-            }
-            set
-            {
-                _totalPrice = value;
+                totalPrice = _newOrder.count * pizza.price;
                 OnPropertyChanged("totalPrice");
             }
         }
+        public int totalPrice;
 
         private bool _isMade;
         public bool isMade
@@ -93,7 +82,6 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
         {
             thisOrder = openOrder;
             pizza = dish;
-            //currentUser = user;
             newOrder = new tblOrder()
             {
                 dishId = pizza.dishId,
@@ -101,7 +89,6 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
                 status = "waiting",
                 username = user.username
             };
-            totalPrice = newOrder.count * pizza.price;
         }
 
 

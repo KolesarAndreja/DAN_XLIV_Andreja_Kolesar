@@ -29,12 +29,17 @@
                                         Binding="{Binding dishName}" />
                     <DataGridTextColumn Header="Price (rsd)"
                                         Binding="{Binding price}" />
+                    <!--<DataGridTextColumn Header="Status"
+                                        Binding="{Binding status}"
+                                        Visibility="{Binding statusColumn}"
+                                        />-->
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Name="btnOrder"
                                         Content="Order"
-                                        Visibility="{Binding btnToOrder, UpdateSourceTrigger=PropertyChanged}"
+                                        Visibility="{Binding Path=DataContext.btnToOrder, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}}, UpdateSourceTrigger=PropertyChanged}"
                                         Command="{Binding Path=DataContext.orderPizza, RelativeSource= {RelativeSource FindAncestor,
                                        AncestorType={x:Type DataGrid}}, UpdateSourceTrigger=PropertyChanged}"
                                         Margin="4"

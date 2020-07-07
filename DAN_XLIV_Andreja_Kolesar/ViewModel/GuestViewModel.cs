@@ -86,6 +86,19 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
                 OnPropertyChanged("btnToOrder");
             }
         }
+        //private Visibility _statusColumn = Visibility.Collapsed;
+        //public Visibility statusColumn
+        //{
+        //    get
+        //    {
+        //        return _statusColumn;
+        //    }
+        //    set
+        //    {
+        //        _statusColumn = value;
+        //        OnPropertyChanged("statusColumn");
+        //    }
+        //}
         #endregion
         #region COMMANDS
         private ICommand _orderPizza;
@@ -107,11 +120,14 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
             {
                 if (pizza != null)
                 {
+                    pizza.status = "waiting";
                     MakeOrder newOrder = new MakeOrder(pizza,currentUser);
                     newOrder.ShowDialog();
                     if ((newOrder.DataContext as MakeOrderViewModel).isMade == true)
                     {
                         btnToOrder = Visibility.Collapsed;
+                        //statusColumn = Visibility.Visible;
+
                     }
                 }   
 

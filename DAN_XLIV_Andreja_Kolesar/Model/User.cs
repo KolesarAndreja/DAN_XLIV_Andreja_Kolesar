@@ -15,11 +15,11 @@ namespace DAN_XLIV_Andreja_Kolesar.Model
         {
             get
             {
-                if (username == "zaposleni" && password == "zaposleni")
+                if (username.ToLower() == "zaposleni" && password.ToLower() == "zaposleni")
                 {
                     return "zaposleni";
                 }
-                else if (password == "gost" && validJmbg(username))
+                else if (password.ToLower() == "gost" && validJmbg(username))
                 {
                     return "gost";
                 }

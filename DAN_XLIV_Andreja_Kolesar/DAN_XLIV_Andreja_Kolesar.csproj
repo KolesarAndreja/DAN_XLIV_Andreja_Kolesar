@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Converter\StringConverter.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Service\ModelPizza.Context.cs">
       <AutoGen>True</AutoGen>
@@ -91,11 +92,15 @@
     <Compile Include="Service\vwOrder.cs">
       <DependentUpon>ModelPizza.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AdjactOrApproveViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\GuestViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MakeOrderViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\AdjactOrApprove.xaml.cs">
+      <DependentUpon>AdjactOrApprove.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Employee.xaml.cs">
       <DependentUpon>Employee.xaml</DependentUpon>
     </Compile>
@@ -120,6 +125,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AdjactOrApprove.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Employee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

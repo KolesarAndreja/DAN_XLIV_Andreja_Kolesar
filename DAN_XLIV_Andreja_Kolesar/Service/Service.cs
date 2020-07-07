@@ -30,14 +30,14 @@ namespace DAN_XLIV_Andreja_Kolesar.Service
         }
 
         //read orders
-        public static List<vwOrder> GetAllOrders()
+        public static List<tblOrder> GetAllOrders()
         {
             try
             {
                 using (dbPizzeriaEntities context = new dbPizzeriaEntities())
                 {
-                    List<vwOrder> list = new List<vwOrder>();
-                    list = (from x in context.vwOrders select x).ToList();
+                    List<tblOrder> list = new List<tblOrder>();
+                    list = (from x in context.tblOrders select x).ToList();
                     return list;
                 }
             }
@@ -84,6 +84,25 @@ namespace DAN_XLIV_Andreja_Kolesar.Service
             {
                 System.Diagnostics.Debug.WriteLine("Exception: " + ex.Message.ToString());
                 return null;
+            }
+        }
+        #endregion
+
+        #region DELETE
+        public static void DeleteOrder(tblOrder order)
+        {
+            try
+            {
+                using (dbPizzeriaEntities context = new dbPizzeriaEntities())
+                {
+                    tblOrder orderToDelete = (from u in context.tblOrders where u.orderId == order.orderId select u).First();
+                    context.tblOrders.Remove(orderToDelete);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
             }
         }
         #endregion

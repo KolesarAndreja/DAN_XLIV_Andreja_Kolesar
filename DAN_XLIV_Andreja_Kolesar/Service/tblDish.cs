@@ -24,6 +24,8 @@ namespace DAN_XLIV_Andreja_Kolesar.Service
         public string dishName { get; set; }
         public int price { get; set; }
     
+        //not mapping prop
+        public string status { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblOrder> tblOrders { get; set; }
     }

@@ -7,6 +7,52 @@
         mc:Ignorable="d"
         Title="Employee" Height="450" Width="800">
     <Grid>
-        
+        <Grid Height="auto"
+              Width="auto">
+            <DataGrid Name="Orders"
+                      Height="auto"
+                      Width="auto"
+                      ItemsSource="{Binding orderList, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding singleOrder, UpdateSourceTrigger=PropertyChanged}"
+                      IsReadOnly="True"
+                      HeadersVisibility="Column"
+                      AutoGenerateColumns="False"
+                      HorizontalGridLinesBrush="Black"
+                      BorderBrush="Black"
+                      Foreground="Black"
+                      FontWeight="Bold"
+                      Margin="50,35,52,69">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="OrderId"
+                                        Binding="{Binding orderId}" />
+                    <DataGridTextColumn Header="Username"
+                                        Binding="{Binding username}" />
+                    <DataGridTextColumn Header="Date and Time"
+                                        Binding="{Binding dateAndTime}" />
+                    <DataGridTextColumn Header="Pizza Id"
+                                        Binding="{Binding dishId}" />
+                    <DataGridTextColumn Header="Status"
+                                        Binding="{Binding status}" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnOrder"
+                                        Content="Archive/Aprove/Rejact"
+                                        Command="{Binding Path=DataContext.action, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}}, UpdateSourceTrigger=PropertyChanged}"
+                                        Margin="4"
+                                        FontWeight="Bold" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Log out"
+                    Command="{Binding close, UpdateSourceTrigger=PropertyChanged}"
+                    HorizontalAlignment="Left"
+                    Margin="20,10,0,0"
+                    VerticalAlignment="Top"
+                    Width="75" />
+        </Grid>
     </Grid>
 </Window>
