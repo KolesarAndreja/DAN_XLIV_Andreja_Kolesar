@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAN_XLIV_Andreja_Kolesar.Model;
+using DAN_XLIV_Andreja_Kolesar.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,13 @@ namespace DAN_XLIV_Andreja_Kolesar.View
         public Guest()
         {
             InitializeComponent();
+            this.DataContext = new GuestViewModel(this);
+        }
+
+        public Guest(User user)
+        {
+            InitializeComponent();
+            this.DataContext = new GuestViewModel(this, user);
         }
     }
 }

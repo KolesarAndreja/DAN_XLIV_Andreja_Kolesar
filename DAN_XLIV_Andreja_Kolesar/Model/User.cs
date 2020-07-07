@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAN_XLIV_Andreja_Kolesar.Model
 {
-    class User
+    public class User
     {
         #region PROPERTY
         public string username { get; set; }
