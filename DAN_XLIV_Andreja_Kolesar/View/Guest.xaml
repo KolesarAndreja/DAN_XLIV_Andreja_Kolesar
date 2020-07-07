@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DAN_XLIV_Andreja_Kolesar.View"
         mc:Ignorable="d"
-        Title="Guest" Height="450" Width="800">
+        Title="Guest"
+        Height="auto"
+        Width="auto">
     <Grid>
-        
+        <Grid Height="auto"
+              Width="auto">
+            <DataGrid Name="MenuGrid"
+                      Height="auto"
+                      Width="auto"
+                      ItemsSource="{Binding menuList, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding pizza, UpdateSourceTrigger=PropertyChanged}"
+                      IsReadOnly="True"
+                      HeadersVisibility="Column"
+                      AutoGenerateColumns="False"
+                      HorizontalGridLinesBrush="Black"
+                      BorderBrush="Black"
+                      Foreground="Black"
+                      FontWeight="Bold"
+                      Margin="50,35,600,259">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Pizza"
+                                        Binding="{Binding dishName}" />
+                    <DataGridTextColumn Header="Price (rsd)"
+                                        Binding="{Binding price}" />
+                    <!--<DataGridTextColumn Header="Status"
+                                        Binding="{Binding status}"
+                                        Visibility="{Binding statusColumn}"
+                                        />-->
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnOrder"
+                                        Content="Order"
+                                        Visibility="{Binding Path=DataContext.btnToOrder, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}}, UpdateSourceTrigger=PropertyChanged}"
+                                        Command="{Binding Path=DataContext.orderPizza, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}}, UpdateSourceTrigger=PropertyChanged}"
+                                        Margin="4"
+                                        FontWeight="Bold" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Log out"
+                    Command="{Binding close, UpdateSourceTrigger=PropertyChanged}"
+                    HorizontalAlignment="Left"
+                    Margin="20,10,0,0"
+                    VerticalAlignment="Top"
+                    Width="75" />
+        </Grid>
     </Grid>
 </Window>
