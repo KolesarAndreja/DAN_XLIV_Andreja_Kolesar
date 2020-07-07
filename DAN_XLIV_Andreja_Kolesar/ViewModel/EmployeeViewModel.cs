@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAN_XLIV_Andreja_Kolesar.ViewModel
 {
-    class EmployeeViewModel
+    class EmployeeViewModel:ViewModelBase
     {
     }
 }

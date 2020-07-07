@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DAN_XLIV_Andreja_Kolesar.View"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
+        Title="Login"
+        Height="auto"
+        Width="auto">
     <Grid>
-        
+        <Label x:Name="lblUsername"
+               Content="username:"
+               HorizontalAlignment="Left"
+               Height="30"
+               Margin="80,80,0,0"
+               VerticalAlignment="Top"
+               Width="70" />
+        <Label x:Name="lblPassword"
+               Content="password:"
+               HorizontalAlignment="Left"
+               Height="30"
+               Margin="80,120,0,0"
+               VerticalAlignment="Top"
+               Width="70" />
+        <TextBox x:Name="txtUsername"
+                 HorizontalAlignment="Left"
+                 Height="20"
+                 Margin="165,80,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="245"
+                 Text="{Binding currentUser.username, UpdateSourceTrigger=PropertyChanged}" />
+        <PasswordBox x:Name="passwordBox"
+                     HorizontalAlignment="Left"
+                     Margin="165,120,0,0"
+                     VerticalAlignment="Top"
+                     Width="245"
+                     Height="20" />
+        <Button x:Name="btnLogin"
+                Content="Login"
+                Command="{Binding loginBtn, UpdateSourceTrigger=PropertyChanged}"
+                CommandParameter="{Binding ElementName=passwordBox}"
+                HorizontalAlignment="Left"
+                Height="30"
+                Margin="210,180,0,0"
+                VerticalAlignment="Top"
+                Width="140" />
+      
     </Grid>
 </Window>
