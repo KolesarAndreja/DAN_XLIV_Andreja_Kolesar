@@ -20,7 +20,6 @@ namespace DAN_XLIV_Andreja_Kolesar.Service
         public int count { get; set; }
         public System.DateTime dateAndTime { get; set; }
         public string status { get; set; }
-    
         public virtual tblDish tblDish { get; set; }
     }
 }

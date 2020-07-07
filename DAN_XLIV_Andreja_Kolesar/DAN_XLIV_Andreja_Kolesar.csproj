@@ -71,14 +71,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelPizza.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service\ModelPizza.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPizza.tt</DependentUpon>
+    </Compile>
     <Compile Include="Service\ModelPizza.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelPizza.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Service\Service.cs" />
+    <Compile Include="Service\tblDish.cs">
+      <DependentUpon>ModelPizza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\tblOrder.cs">
+      <DependentUpon>ModelPizza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\vwOrder.cs">
+      <DependentUpon>ModelPizza.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\GuestViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MakeOrderViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\Employee.xaml.cs">
       <DependentUpon>Employee.xaml</DependentUpon>
@@ -88,6 +104,9 @@
     </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MakeOrder.xaml.cs">
+      <DependentUpon>MakeOrder.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -110,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MakeOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,6 +176,12 @@
     <Content Include="Service\ModelPizza.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelPizza.Context.cs</LastGenOutput>
+      <DependentUpon>ModelPizza.edmx</DependentUpon>
+    </Content>
+    <Content Include="Service\ModelPizza.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPizza.edmx</DependentUpon>
+      <LastGenOutput>ModelPizza.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -63,7 +63,7 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
                         openEmployee.ShowDialog();
                         break;
                     case "gost":
-                        Guest openGuest = new Guest();
+                        Guest openGuest = new Guest(currentUser);
                         login.Close();
                         openGuest.ShowDialog();
                         break;
