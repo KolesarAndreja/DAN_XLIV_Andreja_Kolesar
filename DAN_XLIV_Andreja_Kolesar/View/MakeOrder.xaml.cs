@@ -22,10 +22,26 @@ namespace DAN_XLIV_Andreja_Kolesar.View
     /// </summary>
     public partial class MakeOrder : Window
     {
+        public tblDish dish { get; set; }
+        
         public MakeOrder(tblDish pizza, User user)
         {
             InitializeComponent();
+            dish = pizza;
             this.DataContext = new MakeOrderViewModel(this, pizza, user);
+        }
+
+        private void textChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            string temp = txtQuantity.Text;
+            if(Int32.TryParse(temp,out int quantity))
+            {
+                total.Content = (dish.price * quantity).ToString();
+            }
+            else
+            {
+                total.Content = "0";
+            }
         }
     }
 }

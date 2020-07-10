@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:DAN_XLIV_Andreja_Kolesar.View"
         mc:Ignorable="d"
         Title="Login"
-        Height="auto"
-        Width="auto">
+        Height="300"
+        Width="550">
     <Grid>
         <Label x:Name="lblUsername"
                Content="username:"

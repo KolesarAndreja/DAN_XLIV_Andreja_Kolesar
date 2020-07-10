@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAN_XLIV_Andreja_Kolesar.Service
 {
@@ -106,5 +104,65 @@ namespace DAN_XLIV_Andreja_Kolesar.Service
             }
         }
         #endregion
+
+        #region GET LIST OF ORDERS BY USERNAME
+        public static List<tblOrder> GetOrdersByUsername(string username)
+        {
+            try
+            {
+                using (dbPizzeriaEntities context = new dbPizzeriaEntities())
+                {
+                    List<tblOrder> result = (from x in context.tblOrders where x.username == username select x).ToList();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception " + ex.Message.ToString());
+                return null;
+            }
+        }
+        #endregion
+
+        #region GET PIZZA NAME
+        public static string GetPizzaName(int ?dishId)
+        {
+            try
+            {
+                using (dbPizzeriaEntities context = new dbPizzeriaEntities())
+                {
+
+                    string result = (from x in context.tblDishes where x.dishId == dishId select x.dishName).FirstOrDefault();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception " + ex.Message.ToString());
+                return null;
+            }
+        }
+        #endregion
+
+        #region GET TOTAL PRICE
+        public static int? GetTotalPrice(int orderId)
+        {
+            try
+            {
+                using (dbPizzeriaEntities context = new dbPizzeriaEntities())
+                {
+
+                    int ?result = (from x in context.vwOrders where x.orderId == orderId select x.totalPrice).FirstOrDefault();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception " + ex.Message.ToString());
+                return null;
+            }
+        }
+        #endregion
+
     }
 }

@@ -57,6 +57,35 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
                 OnPropertyChanged("pizza");
             }
         }
+
+        private List<tblOrder> _myOrdersList;
+        public List<tblOrder> myOrdersList
+        {
+            get
+            {
+                return _myOrdersList;
+            }
+            set
+            {
+                _myOrdersList = value;
+                OnPropertyChanged("myOrdersList");
+            }
+        }
+
+        private tblOrder _currentOrder;
+        public tblOrder currentOrder
+        {
+            get
+            {
+                return _currentOrder;
+            }
+            set
+            {
+                _currentOrder = value;
+                OnPropertyChanged("currentOrder");
+            }
+        }
+
         #endregion
 
         #region CONSTRUCTOR
@@ -65,6 +94,7 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
             guest = open;
             currentUser = user;
             menuList = Service.Service.GetMenu();
+            myOrdersList = Service.Service.GetOrdersByUsername(currentUser.username);
         }
 
         public GuestViewModel(Guest open)
@@ -72,12 +102,23 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
             guest = open;
         }
         #endregion
+
         #region VISIBILITY
         private Visibility _btnToOrder = Visibility.Visible;
         public Visibility btnToOrder
         {
             get
             {
+                if (myOrdersList.Count!=0)
+                {
+                    for(int i=0; i< myOrdersList.Count; i++)
+                    {
+                        if(myOrdersList[i].status == "waiting")
+                        {
+                            return Visibility.Collapsed;
+                        }
+                    }
+                }
                 return _btnToOrder;
             }
             set
@@ -86,20 +127,25 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
                 OnPropertyChanged("btnToOrder");
             }
         }
-        //private Visibility _statusColumn = Visibility.Collapsed;
-        //public Visibility statusColumn
-        //{
-        //    get
-        //    {
-        //        return _statusColumn;
-        //    }
-        //    set
-        //    {
-        //        _statusColumn = value;
-        //        OnPropertyChanged("statusColumn");
-        //    }
-        //}
+        private Visibility _ordersVisibility = Visibility.Visible;
+        public Visibility ordersVisibility
+        {
+            get
+            {
+                if (myOrdersList.Count()==0)
+                {
+                    return Visibility.Collapsed;
+                }
+                return _ordersVisibility;
+            }
+            set
+            {
+                _ordersVisibility = value;
+                OnPropertyChanged("ordersVisibility");
+            }
+        }
         #endregion
+
         #region COMMANDS
         private ICommand _orderPizza;
         public ICommand orderPizza
@@ -120,14 +166,13 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
             {
                 if (pizza != null)
                 {
-                    pizza.status = "waiting";
                     MakeOrder newOrder = new MakeOrder(pizza,currentUser);
                     newOrder.ShowDialog();
                     if ((newOrder.DataContext as MakeOrderViewModel).isMade == true)
                     {
                         btnToOrder = Visibility.Collapsed;
-                        //statusColumn = Visibility.Visible;
-
+                        myOrdersList = Service.Service.GetOrdersByUsername(currentUser.username);
+                        ordersVisibility = Visibility.Visible;
                     }
                 }   
 

@@ -37,8 +37,20 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Name="btnOrder"
-                                        Content="Archive/Aprove/Rejact"
+                                        Content="Change status"
                                         Command="{Binding Path=DataContext.action, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}}, UpdateSourceTrigger=PropertyChanged}"
+                                        Margin="4"
+                                        FontWeight="Bold" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnArchive"
+                                        Content="Archive"
+                                        Command="{Binding Path=DataContext.archive, RelativeSource= {RelativeSource FindAncestor,
                                        AncestorType={x:Type DataGrid}}, UpdateSourceTrigger=PropertyChanged}"
                                         Margin="4"
                                         FontWeight="Bold" />

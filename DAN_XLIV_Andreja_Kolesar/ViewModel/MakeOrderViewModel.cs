@@ -29,11 +29,8 @@ namespace DAN_XLIV_Andreja_Kolesar.ViewModel
             {
                 _newOrder = value;
                 OnPropertyChanged("newOrder");
-                totalPrice = _newOrder.count * pizza.price;
-                OnPropertyChanged("totalPrice");
             }
         }
-        public int totalPrice;
 
         private bool _isMade;
         public bool isMade

@@ -20,6 +20,24 @@ namespace DAN_XLIV_Andreja_Kolesar.Service
         public int count { get; set; }
         public System.DateTime dateAndTime { get; set; }
         public string status { get; set; }
+
+
+        //not mapping props
+        public string dishName
+        {
+            get
+            {
+                return Service.GetPizzaName(dishId);
+            }
+        }
+
+        public int? totalPrice
+        {
+            get
+            {
+                 return Service.GetTotalPrice(orderId);
+            }
+        }
         public virtual tblDish tblDish { get; set; }
     }
 }
