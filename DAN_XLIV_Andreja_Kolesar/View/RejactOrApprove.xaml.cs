@@ -19,18 +19,18 @@ namespace DAN_XLIV_Andreja_Kolesar.View
     /// <summary>
     /// Interaction logic for AdjactOrApprove.xaml
     /// </summary>
-    public partial class AdjactOrApprove : Window
+    public partial class RejactOrApprove : Window
     {
-        public AdjactOrApprove()
+        public RejactOrApprove()
         {
             InitializeComponent();
-            this.DataContext = new AdjactOrApproveViewModel(this);
+            this.DataContext = new RejactOrApproveViewModel(this);
         }
 
-        public AdjactOrApprove(tblOrder order)
+        public RejactOrApprove(tblOrder order)
         {
             InitializeComponent();
-            this.DataContext = new AdjactOrApproveViewModel(this,order);
+            this.DataContext = new RejactOrApproveViewModel(this,order);
         }
 
     }

@@ -28,12 +28,15 @@
             <TextBox x:Name="txtQuantity"
                      Text="{Binding newOrder.count, UpdateSourceTrigger=PropertyChanged}"
                      HorizontalAlignment="Left"
+                     TextChanged="textChangedEventHandler"
                      Height="25"
                      Margin="240,120,0,0"
                      TextWrapping="Wrap"
                      VerticalAlignment="Top"
                      Width="320" />
-            <Label Content="{Binding Path=totalPrice, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+            <!--Content="{Binding totalPrice, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"-->
+            <Label 
+                   x:Name="total"
                    HorizontalAlignment="Left"
                    Margin="240,160,0,0"
                    VerticalAlignment="Top"
